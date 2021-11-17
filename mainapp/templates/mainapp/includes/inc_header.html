@@ -1,0 +1,72 @@
+{% load static %}
+<div id="tooplate_header">
+    <div id="header_top">
+        <div id="site_title"><a href="/">Clothing Template</a></div>
+        <div id="tooplate_menu" class="ddsmoothmenu">
+            <ul>
+                <li><a href="{% url 'main' %}" class="{% if request.resolver_match.url_name == 'main' %}
+                        selected
+                      {% endif %}">Главная</a></li>
+                <li>
+                    <a href="{% url 'products:category' 0 %}" class="{% if request.resolver_match.namespace == 'products' %}
+              selected
+            {% endif %}">Продукция</a>
+                    <ul>
+                        {% for category in categories %}
+                        <li><a href="{% url 'products:category' category.id %}" class="{% if category.name == current_category.name %}
+              selected
+            {% endif %}">{{ category.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li><a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}
+                        selected
+                      {% endif %}">О нас</a></li>
+<!--                <li><a href="{% url 'faqs' %}" class="{% if request.resolver_match.url_name == 'faqs' %}-->
+<!--                        selected-->
+<!--                      {% endif %}">FAQs</a></li>-->
+                <li><a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}
+                        selected
+                      {% endif %}">Контакты</a></li>
+                {% if user.is_superuser %}
+                <li><a href="{% url 'adminapp:users' %}">Админка</a></li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'auth:edit' %}">{{ user.first_name|default:'Юзер' }}</a></li>
+                {% endif %}
+                <li>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'auth:logout' %}">Выйти</a>
+                    {% else %}
+                    <a href="{% url 'auth:login' %}">Войти</a>
+                    {% endif %}
+                </li>
+            </ul>
+            <br style="clear: left"/>
+        </div> <!-- end of tooplate_menu -->
+    </div> <!-- END of header top -->
+
+    <div id="header_bottom">
+        <p>
+            <a href="{% url 'basket:view' %}">Корзина</a> |
+            <a href="{% url 'checkout' %}">Купить</a> |
+            <span>Товаров в корзине (
+                {% if basket %}
+                    {{ basket.0.total_quantity }}
+                {% endif %}
+                )</span>
+                {% if basket %}
+                <span> на сумму:{{ basket.0.total_cost|floatformat:0 }} руб.</span>
+                {% endif %}
+        </p>
+
+        <div id="tooplate_search">
+            <form action="#" method="get">
+                <input type="text" value=" " name="keyword" id="keyword" title="keyword" onfocus="clearText(this)"
+                       onblur="clearText(this)" class="txt_field"/>
+                <input type="submit" name="Search" value=" " alt="Поиск" id="searchbutton" title="Поиск"
+                       class="sub_btn"/>
+            </form>
+        </div>
+    </div> <!-- END of header bottom -->
+</div> <!-- END of header -->

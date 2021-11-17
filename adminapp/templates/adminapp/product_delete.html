@@ -1,0 +1,25 @@
+{% extends 'adminapp/base.html' %}
+{% load static %}
+
+
+{% block content %}
+  <div class="user_delete">
+    Уверены, что хотите
+    {% if product_to_delete.is_active%}
+      деактивировать
+    {% else %}
+      активировать
+    {% endif %}
+    категорию {{ product_to_delete.name }}?
+    <form action="{% url 'adminapp:product_delete' product_to_delete.pk %}"
+          method="post">
+      {% csrf_token %}
+      <input class="btn btn-danger" type="submit" value="{% if product_to_delete.is_active %}
+деактивировать{% else %}
+активировать{% endif %}">
+    </form>
+      <a href="{% url 'adminapp:categories' %}" class="btn btn-success">
+        Отмена
+      </a>
+  </div>
+{% endblock %}

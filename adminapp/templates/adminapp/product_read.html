@@ -1,0 +1,44 @@
+{% extends 'adminapp/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="product">
+    <div class="col col_2 product_preview">
+        <a rel="lightbox" href="/media/{{ product.image.url }}"><img src="/media/{{product.image}}"
+                                                                     class="left" alt="{{product.name}}" width="200px"/></a>
+        <div class="clear"></div>
+    </div>
+    <div class="col col_2 product_detail">
+        <h1>Название: {{ product.name}}</h1>
+        <p><em>Краткое описание: {{product.short_desc}}</em></p>
+        <p>Описание:{{product.description}}</p>
+        <div class="clear h20"></div>
+        <p class="price">Цена: ${{product.price}}</p>
+        <div class="clear h20"></div>
+        <p class="add_to_cart">На складе: <strong>{{product.quantity}}</strong></p>
+    </div>
+    <div class="product_actions">
+        <a href="{% url 'adminapp:product_update' product.pk %}" class="btn btn-warning">
+            редактировать
+        </a>
+        <a href="{% url 'adminapp:product_delete' product.pk %}" class="btn
+            {% if object.is_active %}
+                btn-danger
+            {% else %}
+                btn-success
+            {% endif %}">
+            {% if object.is_active %}
+            деактивировать
+            {% else %}
+            активировать
+            {% endif %}
+        </a>
+    </div>
+    <div class="clear"></div>
+</div>
+<button class="btn btn-round form-control last">
+    <a href="{% url 'adminapp:categories' %}">
+        к списку товаров
+    </a>
+</button>
+{% endblock %}

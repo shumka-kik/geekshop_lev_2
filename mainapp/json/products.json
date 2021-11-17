@@ -1,0 +1,72 @@
+[
+  {
+    "category":"Животные",
+    "name": "Панда",
+    "image": "products_images/product1.jpg",
+    "price": "330",
+    "quantity": "100"
+  },
+  {
+    "category":"Животные",
+    "name": "Альпака",
+    "image": "products_images/product2.jpg",
+    "price": "350",
+    "quantity": "59"
+  },
+  {
+    "category":"Машинки",
+    "name": "Грузовик",
+    "image": "products_images/product3.jpg",
+    "price": "640",
+    "quantity": "30"
+  },
+  {
+    "category":"Машинки",
+    "name": "Джип",
+    "image": "products_images/product4.jpg",
+    "price": "700",
+    "quantity": "40"
+  },
+  {
+    "category":"Мячи",
+    "name": "Футбольный мяч",
+    "image": "products_images/product5.jpg",
+    "price": "900",
+    "quantity": "120"
+  },
+  {
+    "category":"Мячи",
+    "name": "Волейбольный мяч",
+    "image": "products_images/product6.jpg",
+    "price": "250",
+    "quantity": "20"
+  },
+  {
+    "category":"Летающие игрушки",
+    "name": "Аэроплан",
+    "image": "products_images/product7.jpg",
+    "price": "1500",
+    "quantity": "36"
+  },
+  {
+    "category":"Летающие игрушки",
+    "name": "Самолет аэролайн",
+    "image": "products_images/product8.jpg",
+    "price": "2200",
+    "quantity": "14"
+  },
+  {
+    "category":"Лего",
+    "name": "Мусорная машина",
+    "image": "products_images/product9.jpg",
+    "price": "3000",
+    "quantity": "77"
+  },
+  {
+    "category":"Лего",
+    "name": "Космический аппарат",
+    "image": "products_images/product10.jpg",
+    "price": "2870",
+    "quantity": "80"
+  }
+]

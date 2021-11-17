@@ -1,0 +1,7 @@
+[
+	{"href":"products", "src":"img/product/01.jpg", "price":"25", "name":"strawberry", "quantity": "2"},
+    {"href":"products", "src":"img/product/02.jpg", "price":"35", "name":"boul", "quantity": "1"},
+    {"href":"products", "src":"img/product/03.jpg", "price":"28", "name":"teddy bear", "quantity": "3"},
+    {"href":"products", "src":"img/product/04.jpg", "price":"45", "name":"ventilator", "quantity": "5"},
+    {"href":"products", "src":"img/product/05.jpg", "price":"33", "name":"brelok", "quantity": "1"}
+]

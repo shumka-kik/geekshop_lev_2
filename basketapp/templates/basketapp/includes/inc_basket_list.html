@@ -1,0 +1,49 @@
+{% load mainapp_extras %}
+{% load static %}
+{% load my_tags %}
+
+<h1>Товары в корзине</h1>
+
+<table width="580px" cols="0" cellspacing="0" cellpadding="5">
+    <tr bgcolor="#ddd">
+        <th width="220" align="left">Изображение</th>
+        <th width="180" align="left">Название</th>
+        <th width="160" align="center">Кол-во</th>
+        <th width="60" align="right">Цена</th>
+        <th width="60" align="right">Сумма</th>
+        <th width="90"></th>
+
+    </tr>
+    {% for basket in basket_products %}
+
+    <tr>
+        <td><a href="{% url 'products:productdetail' basket.product.id %}"><img src="{{ basket.product.image|media_folder_products }}"
+                                                                                alt="{{basket.product.name}}"
+                                                                                height="70px"/></a></td>
+        <td><a href="{% url 'products:productdetail' basket.product.id %}">{{ basket.product.name|upper }}</a></td>
+        <td align="center">
+            <input type="number" name="{{basket.pk}}" value="{{basket.quantity}}" min="0" style="width: 40px; text-align: right"/>
+        </td>
+        <td align="right">${{ basket.product.price }}</td>
+        <td align="right">${% multiply basket.quantity basket.product.price %}</td>
+        <td align="center"><a href="{% url 'basket:remove' basket.id%}"><img src="{% static 'img/remove.png' %}"
+                                                                             alt="remove"/><br/>Удалить</a>
+        </td>
+    </tr>
+    {% endfor %}
+    <tr>
+        <td colspan="3" style="background: url({% static 'img/tooplate_h2.png' %}) repeat" align="right"
+            height="30px">Have
+            you modified your basket? Please click here to <a
+                    href="{% url 'basket:view' %}"><strong>Update</strong></a>&nbsp;&nbsp;
+        </td>
+        <td align="right" style="background: url({% static 'img/tooplate_h2.png' %}) repeat; font-weight:bold">
+            Сумма корзины
+        </td>
+        <td align="right" style="background: url({% static 'img/tooplate_h2.png' %}) repeat; font-weight:bold">
+            ${{basket_summ}}
+        </td>
+        <td style="background: url({% static 'img/tooplate_h2.png' %}) repeat; font-weight:bold"></td>
+    </tr>
+</table>
+<p class="right"><a href="checkout.html" class="button">checkout</a></p>

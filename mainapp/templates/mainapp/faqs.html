@@ -1,0 +1,40 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block title%}
+{{ title|title }}
+{% endblock %}
+{% block main%}
+<div id="tooplate_main"><span class="main_border main_border_t"></span><span class="main_border main_border_b"></span>
+
+    <div id="content">
+        <h2>FAQs</h2>
+        <h5>When will my order be confirmed?</h5>
+        <p>You will receive an email confirmation that your order has been received within an hour. If you do not
+            receive an email confirmation, please check to see if the email address on your order was placed
+            correctly.</p>
+        <hr/>
+        <h5>When will my order be shipped?</h5>
+        <p>It will take 2 days for shipping. Please read our shipping policy for more information. Click <a href="#">here</a>
+        </p>
+        <hr/>
+        <h5>What payment methods do you accept?</h5>
+        <p>We accept PayPal and 2Checkout (2CO).</p>
+        <hr/>
+        <h5>Can I return or exchange my purchase if I do not like it?</h5>
+        <p>Please read our product return or exchange policies. Click <a href="#">here</a></p>
+        <hr/>
+        <h5>What is your privacy policy?</h5>
+        <p>This site respects your privacy and wants to ensure that you understand what information we need to complete
+            your order, and what information you can choose to share with us and with our marketing partners. For
+            complete information on our privacy policy, please visit our <a href="#">Privacy Policy</a> page.</p>
+        <p>&nbsp;</p>
+        <h5>Thank you for shopping with us!</h5>
+        <p>&nbsp;</p>
+        <div class="cleaner h40"></div>
+    </div> <!-- END of content -->
+
+    {% include 'mainapp/includes/inc_popular_products.html' %}
+
+    <div class="clear"></div>
+</div> <!-- END of main -->
+{% endblock %}

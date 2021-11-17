@@ -1,0 +1,7 @@
+[
+	{"href":"main", "name": "Главная"},
+    {"href":"products:index", "name": "Продукция"},
+    {"href":"about", "name": "О нас"},
+    {"href":"faqs", "name": "FAQs"},
+    {"href":"contact", "name": "Контакты"}
+]

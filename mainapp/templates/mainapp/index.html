@@ -1,0 +1,79 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% load my_tags %}
+{% block title %}
+{{ title|title }}
+{% endblock %}
+{% block main %}
+<div id="tooplate_slider" class="section_content"><span class="frame"></span>
+    <div id="carousel">
+        <div class="panel">
+
+            <div class="details_wrapper">
+
+                <div class="details">
+                    {% for product in new_products %}
+                    <div class="detail">
+                        <h2>{{product.name}}</h2>
+                        <p>{{product.short_desc}}</p>
+                        <a href="{% url 'products:productdetail' product.id %}" title="Подробнее" class="slider_more">Подробнее</a>
+                    </div><!-- /detail -->
+                    {% endfor %}
+
+                </div><!-- /details -->
+
+            </div><!-- /details_wrapper -->
+
+        </div><!-- /panel -->
+
+        <a href="javascript:void(0);" class="previous" title="Previous">Назад</a>
+        <a href="javascript:void(0);" class="next" title="Next">Вперёд</a>
+
+        <div id="slider-image-frame">
+            <div class="backgrounds">
+                {% for product in new_products %}
+                <div class="item item_1">
+                    <img src="{{product.image|media_folder_products}}" alt="{{product.name}}"/>
+                </div><!-- /item -->
+                {% endfor %}
+
+            </div><!-- /backgrounds -->
+        </div>
+    </div>
+    <div class="clear"></div>
+</div> <!-- END of slider -->
+<div id="tooplate_main"><span class="main_border main_border_t"></span><span class="main_border main_border_b"></span>
+    <div class="product">
+        <h1>Новинки</h1>
+        {% for product in new_products %}
+        <div class="product_box">
+            <div class="img_box"><span></span>
+                <a href="{% url 'products:productdetail' product.id %}"><img src="{{ product.image|media_folder_products }}" alt="{{ product.short.desc }}"
+                                                       height="148px" width="160px"/></a>
+            </div>
+            <h2><a href="{% url 'products:productdetail' product.id %}">{{ product.name }}</a></h2>
+            <p class="price">${{ product.price }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="clear h20"></div>
+    <hr/>
+    <div class="clear h10"></div>
+
+    <div class="product">
+        <h1>Популярное</h1>
+        {% for product in popular_product %}
+        <div class="product_box">
+            <div class="img_box"><span></span>
+                <a href="#"><img src="{{ product.image.url }}" alt="image" height="148px" width="160px"/></a>
+            </div>
+            <h2><a href="#">{{ product.name|lower }}</a></h2>
+            <p class="price">${{ product.price }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="clear"></div>
+</div> <!-- END of main -->
+{% endblock %}

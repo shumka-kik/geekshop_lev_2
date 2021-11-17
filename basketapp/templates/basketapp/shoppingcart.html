@@ -1,0 +1,14 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block title %}
+{{ title|title }}
+{% endblock %}
+{% block main %}
+<div id="tooplate_main"><span class="main_border main_border_t"></span><span class="main_border main_border_b"></span>
+    <div id="content" class="basket_list">
+        {% include 'basketapp/includes/inc_basket_list.html' %}
+    </div>
+    {% include 'mainapp/includes/inc_popular_products.html' %}
+    <div class="clear"></div>
+</div> <!-- END of main -->
+{% endblock %}

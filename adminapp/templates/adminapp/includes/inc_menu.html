@@ -1,0 +1,23 @@
+<div class="container text-center">
+  <a href="{% url 'main' %}">
+      на сайт
+    </a>
+  <br>
+  <div class="btn-group text-center">
+  <a href="{% url 'adminapp:users' %}"
+       class="btn btn-primary {% if request.resolver_match.url_name in 'users, user_create, user_update, user_delete' %}
+                active
+              {% endif %}">
+      пользователи
+    </a>
+  <a href="{% url 'adminapp:categories' %}"
+       class="btn btn-primary {% if request.resolver_match.url_name in 'categories, category_create, category_update, category_delete, product_create, product_read, products, product_update, product_delete' %}
+                btn btn-primary active
+              {% endif %}">
+      категории
+      {% if category %}
+        :<span>{{ category.name }}</span>
+      {% endif %}
+    </a>
+</div>
+</div>

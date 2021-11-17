@@ -1,0 +1,63 @@
+{% load static %}
+<div id="tooplate_bottom_wrapper">
+    <div id="tooplate_bottom">
+        <div class="col col_4">
+            <h4>Information</h4>
+            <ul class="list_bullet">
+                <li><a href="#">Consectetur adipiscing eli</a></li>
+                <li><a href="#">Nullam vulputate est</a></li>
+                <li><a href="#">Duis porta velit</a></li>
+                <li><a href="#">Pretium suscipit</a></li>
+                <li><a href="#">Nullam eu diam</a></li>
+                <li><a href="#">Duis in libero est</a></li>
+            </ul>
+        </div>
+        <div class="col col_4">
+            <h4>Services &amp; Support</h4>
+            <ul class="list_bullet">
+                <li><a href="#">Duis porta velit</a></li>
+                <li><a href="#">Pretium suscipit</a></li>
+                <li><a href="#">Nullam eu diam</a></li>
+                <li><a href="#">Duis in libero est</a></li>
+                <li><a href="#">Aenean tincidunt</a></li>
+                <li><a href="#">Morbi tempus iaculis</a></li>
+            </ul>
+        </div>
+        <div class="col col_4 twitter">
+            <h4>Pages</h4>
+            <ul class="list_bullet">
+                <li><a href="{% url 'main' %}">Home</a></li>
+                <li><a href="{% url 'products:index' %}">Products</a></li>
+                <li><a href="{% url 'about' %}" class="selected">About</a></li>
+                <li><a href="{% url 'faqs' %}">FAQs</a></li>
+                <li><a href="{% url 'contact' %}" class="last">Contact</a></li>
+            </ul>
+
+
+        </div>
+        <div class="col col_4">
+            <h4>Newsletter</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <div id="tooplate_newsletter">
+                <form action="#" method="get">
+                    <input type="text" value=" " name="keyword" id="keyword" title="keyword" onfocus="clearText(this)"
+                           onblur="clearText(this)" class="txt_field"/>
+                    <input type="submit" name="Search" value=" " alt="Search" id="searchbutton" title="Search"
+                           class="sub_btn"/>
+                </form>
+            </div>
+            <div class="clear h30"></div>
+            <a href="#"><img src="{% static 'img/facebook.png' %}" alt="Facebook"/></a>
+            <a href="#"><img src="{% static 'img/google.png' %}" alt="Google"/></a>
+            <a href="#"><img src="{% static 'img/skype.png' %}" alt="Skype"/></a>
+            <a href="#"><img src="{% static 'img/twitter2.png' %}" alt="Twitter"/></a>
+        </div>
+        <div class="clear"></div>
+    </div> <!-- END of bottom -->
+</div> <!-- END of bottom wrapper -->
+
+<div id="tooplate_footer_wrapper">
+    <div id="tooplate_footer">
+        Copyright © {% now "Y" %} Shumka Shop
+    </div> <!-- END of footer -->
+</div> <!-- END of footer wrapper -->

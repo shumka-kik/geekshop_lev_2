@@ -1,0 +1,57 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% load mainapp_extras %}
+{% block title %}
+{{ title|title }}
+{% endblock %}
+{% block main %}
+<div id="tooplate_main"><span class="main_border main_border_t"></span><span class="main_border main_border_b"></span>
+
+    <div id="content">
+        <h1>Товары в корзине</h1>
+
+        <table width="580px" cols="0" cellspacing="0" cellpadding="5">
+            <tr bgcolor="#ddd">
+                <th width="220" align="left">Изображение</th>
+                <th width="180" align="left">Название</th>
+                <th width="100" align="center">Кол-во</th>
+                <th width="60" align="right">Цена</th>
+                <th width="60" align="right">Сумма</th>
+                <th width="90"></th>
+
+            </tr>
+            {% for product in products %}
+
+            <tr>
+                <td><a href="{% url 'products:productdetail' product.id %}"><img src="{{ product.image|media_folder_products }}" alt="{{product.name}}" height="70px"/></a></td>
+                <td><a href="{% url 'products:productdetail' product.id %}">{{ product.name|upper }}</a></td>
+                <td align="center"><input type="text" value="1"
+                                          style="width: 20px; text-align: right"/></td>
+                <td align="right">${{ product.price }}</td>
+                <td align="right">${% multiply product.quantity product.price %}</td>
+                <td align="center"><a href="#"><img src="{% static 'img/remove.png' %}" alt="remove"/><br/>Удалить</a>
+                </td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="3" style="background: url({% static 'img/tooplate_h2.png' %}) repeat" align="right"
+                    height="30px">Have
+                    you modified your basket? Please click here to <a
+                            href="{% url 'shoppingcart' %}"><strong>Update</strong></a>&nbsp;&nbsp;
+                </td>
+                <td align="right" style="background: url({% static 'img/tooplate_h2.png' %}) repeat; font-weight:bold">
+                    Сумма корзины
+                </td>
+                <td align="right" style="background: url({% static 'img/tooplate_h2.png' %}) repeat; font-weight:bold">
+                    $140
+                </td>
+                <td style="background: url({% static 'img/tooplate_h2.png' %}) repeat; font-weight:bold"></td>
+            </tr>
+        </table>
+        <p class="right"><a href="checkout.html" class="button">checkout</a></p>
+    </div>
+
+    {% include 'mainapp/includes/inc_popular_products.html' %}
+    <div class="clear"></div>
+</div> <!-- END of main -->
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% load my_tags %}
+{% block title %}
+{{ title|title }}
+{% endblock %}
+{% block main %}
+<div id="tooplate_main"><span class="main_border main_border_t"></span><span class="main_border main_border_b"></span>
+    <div class="product">
+        <h1>{{current_category.name}}</h1>
+        {% for product in products %}
+        <div class="product_box">
+            <div class="img_box"><span></span>
+                <a href="{% url 'products:productdetail' product.id %}"><img src="{{ product.image|media_folder_products }}"
+                                                                             alt="{{ product.short_desc}}"
+                                                                             height="148px" width="170px"/></a>
+            </div>
+            <h2><a href="{{ product.image.url }}">{{ product.name }}</a></h2>
+            <p class="price">${{ product.price }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <hr/>
+
+    <div class="pagging">
+        <ul>
+            {% if products.has_previous %}
+            <li><a href="{% url 'products:page' current_category.pk products.previous_page_number %}" target="_parent">Назад</a>
+            </li>
+            {% endif %}
+            {% for i in page_range|default_if_none:products.paginator.get_elided_page_range %}
+                {% if products.number == i %}
+                <li><a href="{% url 'products:page' current_category.pk i %}" target="_parent" class="selected">{{ i }}</a></li>
+                </li>
+                {% else %}
+                    {% if i == products.paginator.ELLIPSIS %}
+                    <li><a href="#" target="_parent">{{ i }}</a></li>
+                    {% else %}
+                    <li><a href="{% url 'products:page' current_category.pk i %}" target="_parent">{{ i }}</a></li>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            {% if products.has_next %}
+            <li><a href="{% url 'products:page' current_category.pk products.next_page_number %}" target="_parent">Вперёд</a>
+            </li>
+            {% endif %}
+        </ul>
+        <div class="clear"></div>
+    </div>
+
+
+    <div class="clear"></div>
+</div> <!-- END of main -->
+{% endblock %}

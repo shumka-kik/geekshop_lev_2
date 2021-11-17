@@ -1,0 +1,17 @@
+{% load static %}
+{% load my_tags %}
+<div id="sidebar">
+        <div class="sidebar_section sidebar_section_bg">
+            <h3>Популярные товары</h3>
+            <ul class="sidebar_link_list popular_products">
+                {% for product in popular_product %}
+                <li>
+                    <img src="{{ product.image|media_folder_products }}" align="{{ product.short_desc}}" height="40px"/>
+                    <span class="title"><a href="{% url 'products:productdetail' product.id %}">{{ product.name|upper }}</a></span>
+                    <span class="price">${{ product.price }}</span>
+                    <span class="clear"></span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
